@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_080442) do
   create_table "meetings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "start_time"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

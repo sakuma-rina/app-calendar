@@ -55,11 +55,11 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def done
-    @meeting.update(name: "")
-    @meetings = Meeting.all.includes(:user)
-    render :done
+  def dones
+    @meetings = Meeting.all
   end
+
+
 
   private
     def set_meeting
@@ -68,7 +68,7 @@ class MeetingsController < ApplicationController
 
   
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time)
+      params.require(:meeting).permit(:name, :start_time).merge(user_id: current_user.id)
     end
 end
 

@@ -2,8 +2,11 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>ToDoList</h1>   
+<h1>ToDoList</h1>  
+<%= link_to 'リスト一覧表示', dones_meetings_path(current_user) %>
+
 <%= form_with local: true do |f| %>
+
 
 <table>
   <thead>
