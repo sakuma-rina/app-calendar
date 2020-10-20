@@ -2,7 +2,8 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Meetings</h1>
+<h1>ToDoList</h1>   
+<%= form_with local: true do |f| %>
 
 <table>
   <thead>
@@ -15,20 +16,28 @@
 
   <tbody>
     <% @meetings.each do |meeting| %>
-      <tr>
-        <td><%= meeting.name %></td>
-        <td><%= meeting.start_time %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', root_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% unless meeting.dones.present?%>
+        <tr>
+          <td><%= meeting.name %></td>
+          <td><%= meeting.start_time %></td>
+          <td><%= link_to '詳細', meeting %></td>
+          <td><%= link_to '編集', edit_meeting_path(meeting) %></td>
+          <td><%= link_to '削除', meeting_path(meeting) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to '完了', meeting_dones_path(meeting), method: :create %></td>
+      <% end %>
     <% end %>
   </tbody>
 </table>
+<%= f.hidden_field :hidden %>
+
+
+<% end %>
+
+
 
 <br>
 
-<%= link_to 'New Meeting', new_meeting_path %>
+<%= link_to 'New List', new_meeting_path %>
 
 <%= month_calendar events: @meetings do |date, meetings| %>
   <%= date %>
@@ -39,3 +48,7 @@
     </div>
   <% end %>
 <% end %>
+
+
+
+
