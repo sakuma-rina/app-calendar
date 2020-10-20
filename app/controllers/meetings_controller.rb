@@ -45,11 +45,20 @@ class MeetingsController < ApplicationController
 
 
   def destroy
-    @meeting.destroy
-    respond_to do |format|
-      format.html { redirect_to meetings_url, notice: 'Meeting was successfully destroyed.' }
-      format.json { head :no_content }
+    if @meeting.destroy
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: 'List was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      render :index
     end
+  end
+
+  def done
+    @meeting.update(name: "")
+    @meetings = Meeting.all.includes(:user)
+    render :done
   end
 
   private
@@ -62,3 +71,4 @@ class MeetingsController < ApplicationController
       params.require(:meeting).permit(:name, :start_time)
     end
 end
+
