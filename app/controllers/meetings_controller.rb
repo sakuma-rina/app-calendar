@@ -1,4 +1,5 @@
 class MeetingsController < ApplicationController
+  before_action :authenticate_user!, only: [:create,:show,:new, :edit, :update, :destroy,:dones]
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 
  

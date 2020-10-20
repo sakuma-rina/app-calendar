@@ -19,14 +19,16 @@
 
   <tbody>
     <% @meetings.each do |meeting| %>
-      <% unless meeting.dones.present?%>
-        <tr>
-          <td><%= meeting.name %></td>
-          <td><%= meeting.start_time %></td>
-          <td><%= link_to '詳細', meeting %></td>
-          <td><%= link_to '編集', edit_meeting_path(meeting) %></td>
-          <td><%= link_to '削除', meeting_path(meeting) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <td><%= link_to '完了', meeting_dones_path(meeting), method: :create %></td>
+      <% if user_signed_in? && current_user.id == meeting.user_id %>
+        <% unless meeting.dones.present?%>
+          <tr>
+            <td><%= meeting.name %></td>
+            <td><%= meeting.start_time %></td>
+            <td><%= link_to '詳細', meeting %></td>
+            <td><%= link_to '編集', edit_meeting_path(meeting) %></td>
+            <td><%= link_to '削除', meeting_path(meeting) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to '完了', meeting_dones_path(meeting), method: :create %></td>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
@@ -46,9 +48,13 @@
   <%= date %>
 
   <% meetings.each do |meeting| %>
-    <div>
-      <%= meeting.name %>
-    </div>
+  <% if user_signed_in? && current_user.id == meeting.user_id %>
+      <% unless meeting.dones.present?%>
+        <div>
+          <%= meeting.name %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
 
