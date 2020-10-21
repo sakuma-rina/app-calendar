@@ -56,3 +56,7 @@ gem 'simple_calendar', '~> 2.0'
 gem 'devise'
 
 gem 'pry-rails'
+
+group :production do
+  gem 'rails_12factor'
+end
