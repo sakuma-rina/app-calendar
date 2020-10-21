@@ -72,7 +72,7 @@ ToDoリストを追加後、詳細、編集、削除、完了が出来るよう�
 ## ローカルでの動作方法
 以下の順でターミナルに入力してください。
 ```
-git clone https://github.com/sakuma-rina/app-calendar #アプリをclone
+git clone https://github.com/sakuma-rina/app-calendar.git #アプリをclone
 
 % cd #ホームディレクトリに移動
 % cd app-calendar #app-calendarディレクトリに移動
