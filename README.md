@@ -22,3 +22,38 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+ README
+
+
+## users テーブル
+
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+
+has_many :meeting
+
+
+## meetings テーブル
+
+| Column          | Type    | Options                        |
+| ----------------| ------- | ------------------------------ |
+| user_id         | integer | null: false , foreign_key: ture|
+| start_time      | integee | null: false                    |
+| name            | string  | null: false                    |
+
+belongs_to :users
+belongs_to :dones
+
+## dones テーブル
+
+| Column      | Type    | Options                        |
+| ----------- | ------- | ------------------------------ |
+| meeting_id  | integer | null: false , foreign_key: true|
+
+belongs_to :meeting
+
+
