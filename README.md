@@ -47,7 +47,8 @@ ToDoリストを追加後、詳細、編集、削除、完了が出来るよう�
 
 
 ## テーブル
-![ER図]("https://user-images.githubusercontent.com/70619773/96684939-5fac4380-13b7-11eb-93a7-56e6962c3a93.png">)
+![ER図](<img width="803" alt="スクリーンショット 2020-10-21 16 04 25" src="https://user-images.githubusercontent.com/70619773/96684924-591dcc00-13b7-11eb-8861-9d462105ffd4.png">)
+
 
 ## 実装した機能
 * 計算機能
