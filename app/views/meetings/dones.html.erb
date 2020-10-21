@@ -1,0 +1,11 @@
+
+<h1>ToDoList</h1>
+
+<% @meetings.each do|meeting|%>
+  <% if user_signed_in? && current_user.id == meeting.user_id && meeting.dones.present?%>
+      <div><%= meeting.name %></div>
+      <div><%= meeting.start_time %></div>
+  <%end%>
+<%end%>    
+
+<%= link_to 'Back', root_path %>

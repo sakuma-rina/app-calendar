@@ -1,5 +1,6 @@
 class DonesController < ApplicationController
 
+
   def create
     @meeting = Meeting.find(params[:meeting_id])
     @done = Done.new(done_params)
@@ -9,7 +10,6 @@ class DonesController < ApplicationController
       redirect_to root_path
     end
   end
-
 
 
   private
